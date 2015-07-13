@@ -1,0 +1,88 @@
+
+package: MonadRandom-0.4
+os: windows
+arch: x86_64
+compiler: ghc-7.10.1
+client: cabal-install-1.22.6.0
+dependencies: transformers-compat-0.4.0.4 transformers-0.4.2.0
+              random-1.0.1.1 mtl-2.2.1 base-4.8.0.0
+install-outcome: InstallOk
+docs-outcome: NotTried
+tests-outcome: NotTried
+
+package: mtl-2.2.1
+os: windows
+arch: x86_64
+compiler: ghc-7.10.1
+client: cabal-install-1.22.6.0
+dependencies: transformers-0.4.2.0 base-4.8.0.0
+install-outcome: InstallOk
+docs-outcome: NotTried
+tests-outcome: NotTried
+
+package: primitive-0.6
+os: windows
+arch: x86_64
+compiler: ghc-7.10.1
+client: cabal-install-1.22.6.0
+dependencies: transformers-0.4.2.0 ghc-prim-0.4.0.0 base-4.8.0.0
+install-outcome: InstallOk
+docs-outcome: NotTried
+tests-outcome: NotTried
+
+package: random-1.0.1.1
+os: windows
+arch: x86_64
+compiler: ghc-7.10.1
+client: cabal-install-1.22.6.0
+dependencies: time-1.5.0.1 base-4.8.0.0
+install-outcome: InstallOk
+docs-outcome: NotTried
+tests-outcome: NotTried
+
+package: transformers-compat-0.4.0.4
+os: windows
+arch: x86_64
+compiler: ghc-7.10.1
+client: cabal-install-1.22.6.0
+flags: -two -three mtl
+dependencies: transformers-0.4.2.0 base-4.8.0.0
+install-outcome: InstallOk
+docs-outcome: NotTried
+tests-outcome: NotTried
+
+package: vector-0.10.12.3
+os: windows
+arch: x86_64
+compiler: ghc-7.10.1
+client: cabal-install-1.22.6.0
+flags: -unsafechecks -internalchecks boundschecks
+dependencies: primitive-0.6 ghc-prim-0.4.0.0 deepseq-1.4.1.1
+              base-4.8.0.0
+install-outcome: InstallOk
+docs-outcome: NotTried
+tests-outcome: NotTried
+
+package: parsec-3.1.9
+os: windows
+arch: x86_64
+compiler: ghc-7.10.1
+client: cabal-install-1.22.6.0
+flags: base4
+dependencies: text-1.2.1.1 mtl-2.2.1 bytestring-0.10.6.0
+              base-4.8.0.0
+install-outcome: InstallOk
+docs-outcome: NotTried
+tests-outcome: NotTried
+
+package: text-1.2.1.1
+os: windows
+arch: x86_64
+compiler: ghc-7.10.1
+client: cabal-install-1.22.6.0
+flags: -integer-simple -developer
+dependencies: integer-gmp-1.0.0.0 ghc-prim-0.4.0.0 deepseq-1.4.1.1
+              bytestring-0.10.6.0 binary-0.7.3.0 base-4.8.0.0 array-0.5.1.0
+install-outcome: InstallOk
+docs-outcome: NotTried
+tests-outcome: NotTried

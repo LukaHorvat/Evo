@@ -1,0 +1,39 @@
+Registering MonadRandom-0.4...
+Luka\Documents\Haskell\Evo\.cabal-sandbox\x86_64-windows-ghc-7.10.1\MonadRandom-0.4-FKw2mOdPUON8653AvHHcDZ
+Class.hs, dist\dist-sandbox-3641ce58\build\Control\Monad\Random\Class.o )
+[2 of 2] Compiling Control.Monad.Random ( Control\Monad\Random.hs, dist\dist-sandbox-3641ce58\build\Control\Monad\Random.o )
+
+Control\Monad\Random.hs:49:1: Warning:
+    The import of `Control.Applicative' is redundant
+      except perhaps to import instances from `Control.Applicative'
+    To import instances alone, use: import Control.Applicative()
+
+Control\Monad\Random.hs:53:1: Warning:
+    Module `Control.Monad.Error' is deprecated:
+      Use Control.Monad.Except instead
+
+Control\Monad\Random.hs:69:1: Warning:
+    The import of `Data.Monoid' is redundant
+      except perhaps to import instances from `Data.Monoid'
+    To import instances alone, use: import Data.Monoid()
+
+Control\Monad\Random.hs:202:11: Warning:
+    In the use of type constructor or class `Error'
+    (imported from Control.Monad.Error, but defined in Control.Monad.Trans.Error):
+    Deprecated: "Use Control.Monad.Trans.Except instead"
+
+Control\Monad\Random.hs:202:51: Warning:
+    In the use of type constructor or class `ErrorT'
+    (imported from Control.Monad.Error, but defined in Control.Monad.Trans.Error):
+    Deprecated: "Use Control.Monad.Trans.Except instead"
+
+Control\Monad\Random.hs:247:11: Warning:
+    In the use of type constructor or class `Error'
+    (imported from Control.Monad.Error, but defined in Control.Monad.Trans.Error):
+    Deprecated: "Use Control.Monad.Trans.Except instead"
+
+Control\Monad\Random.hs:247:53: Warning:
+    In the use of type constructor or class `ErrorT'
+    (imported from Control.Monad.Error, but defined in Control.Monad.Trans.Error):
+    Deprecated: "Use Control.Monad.Trans.Except instead"
+In-place registering MonadRandom-0.4...
