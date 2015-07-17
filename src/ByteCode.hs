@@ -28,11 +28,17 @@ data Op = Push NumType
                -- to jump to if the second value is not equal to zero (relative)
         | Swp  -- Swaps the two values on the top of the stack
         | Bool -- Pop a value of the stack and push 0 if the value was 0, 1 otherwise
+        | Gt   -- Pop two values of the stack, if the topmost is smaller than the second
+               -- one, push 1 to the stack, otherwise push 0
+        | Geq  -- Pop two values of the stack, if the topmost is smaller or equal to the
+               -- second one, push 1 to the stack, otherwise push 0
+        | Eq   -- Pop two values of the stack, if they are equal push 1, otherwise push 0
+        | Not  -- Pop a value of the stack and push it's binary complement
         deriving (Eq, Ord, Read, Show)
 
 oneParam, twoParam, ops :: Data.Vector.Vector Op
-oneParam = Vec.fromList [Pop, Dup, Get, Jmp, Bool]
-twoParam = Vec.fromList [Add, Mult, Set, And, Or, Xor, Cjmp, Swp]
+oneParam = Vec.fromList [Pop, Dup, Get, Jmp, Bool, Not]
+twoParam = Vec.fromList [Add, Mult, Set, And, Or, Xor, Cjmp, Swp, Gt, Geq, Eq]
 ops = oneParam Vec.++ twoParam
 
 toCode :: Op -> [NumType]
@@ -68,6 +74,7 @@ data MachineSignal = PCUnderflow
                    | MissingValue
                    | BadCode
                    | Timeout
+                   | EmptyCode
                    deriving (Eq, Ord, Read, Show)
 
 data Machine = Machine { getMemory         :: IntMap NumType
@@ -133,7 +140,11 @@ processOp op = checkStackUnderflow opNumParams >=> (return . incCounter . runOp 
               Jmp  -> moveCounter (-1) . moveCounter (fromIntegral x) $ m
               Cjmp -> if y /= 0 then moveCounter (-1) . moveCounter (fromIntegral x) $ m else m
               Swp  -> pushValue x . pushValue y $ m
-              Bool -> if x /= 0 then pushValue 1 m else pushValue 0 m
+              Bool -> pushValue (if x /= 0 then 1 else 0) m
+              Gt   -> pushValue (if y > x then 1 else 0) m
+              Geq  -> pushValue (if y >= x then 1 else 0) m
+              Eq   -> pushValue (if y == x then 1 else 0) m
+              Not  -> pushValue (complement x) m
               Push _ -> error "progressOp given Push"
               where x = head params
                     y = head . tail $ params
@@ -150,7 +161,8 @@ pushNext = checkMissingValue >=> (return . incCounter . doPush)
     where doPush m@Machine{..} = pushValue (getCode Vec.! getProgramCounter) m
 
 interpret :: [(Int, NumType)] -> Code -> [Either MachineSignal Machine]
-interpret mem vec = iterate' advance initial
+interpret mem vec | Vec.length vec == 0 = [Left EmptyCode]
+                  | otherwise           = iterate' advance initial
     where initial = Machine { getMemory         = foldl' (flip . uncurry $ Map.insert) Map.empty mem
                             , getProgramCounter = 0
                             , getStack          = []

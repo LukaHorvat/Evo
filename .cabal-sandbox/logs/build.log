@@ -62,27 +62,3 @@ dependencies: primitive-0.6 ghc-prim-0.4.0.0 deepseq-1.4.1.1
 install-outcome: InstallOk
 docs-outcome: NotTried
 tests-outcome: NotTried
-
-package: parsec-3.1.9
-os: windows
-arch: x86_64
-compiler: ghc-7.10.1
-client: cabal-install-1.22.6.0
-flags: base4
-dependencies: text-1.2.1.1 mtl-2.2.1 bytestring-0.10.6.0
-              base-4.8.0.0
-install-outcome: InstallOk
-docs-outcome: NotTried
-tests-outcome: NotTried
-
-package: text-1.2.1.1
-os: windows
-arch: x86_64
-compiler: ghc-7.10.1
-client: cabal-install-1.22.6.0
-flags: -integer-simple -developer
-dependencies: integer-gmp-1.0.0.0 ghc-prim-0.4.0.0 deepseq-1.4.1.1
-              bytestring-0.10.6.0 binary-0.7.3.0 base-4.8.0.0 array-0.5.1.0
-install-outcome: InstallOk
-docs-outcome: NotTried
-tests-outcome: NotTried
